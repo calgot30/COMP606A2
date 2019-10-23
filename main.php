@@ -1,3 +1,6 @@
+<?php include("header.php");?>
+
+
 <?php
 
 require "classes/customer.php";
@@ -16,3 +19,4 @@ $mike->debug();
 
 
 ?>
+

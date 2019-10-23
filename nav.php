@@ -13,7 +13,7 @@
     and made it usable as a home page button.
  -->
 <div class ="logo" id="logoHome">
-<a href="Home.php"><img src="Assets/logo.png" alt="Logo Home-Page link" height="100" width="125"></a>
+<a href="main.php"><img src="Assets/logo.png" alt="Logo Home-Page link" height="100" width="125"></a>
 </div>
 
 <div class ="navbar" id="barNav">
@@ -21,7 +21,7 @@
     Unordered list for the links for nav bar
  -->
 <ul>
-<li><a href="Home.php">Home</a></li>
+<li><a href="main.php">Home</a></li>
 
 
 

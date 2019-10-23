@@ -1,0 +1,346 @@
+* {box-sizing: border-box;}
+
+
+
+/* Style the navbar */
+.topnav {
+  overflow: hidden;
+  background-color: #0b409c;
+}
+
+/* styling to position the nav links to centre of screen */
+.mainbar {
+    width: 1100px;
+    margin: auto;
+    padding: 0 15px;
+    position: relative;
+}
+
+/* The b-ground design we'll use on all of our pages */
+body {
+  background-color: #ffffff;
+}
+
+/* the Div class we can put all of our content into */
+.mainContent {
+  margin: auto;
+  width: 930px;
+  height: 1000px;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 5px;
+  position: relative;
+  background-color: white;
+}
+
+/* Styling we will use for all paragraph content */
+P {
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1em;
+  text-align: left;
+}
+
+
+/* CSS style for the nav links*/
+.navbar {
+  float: right;
+  padding-top: 35px;
+}
+
+/* unordered list for nav */
+.topnav li {
+  display: inline;
+  overflow: hidden;
+  color: #ffce63;
+}
+
+/* Navbar links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #ffce63;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Navbar links on mouse-over */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Active/current link */
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+/* Style the input container */
+.topnav .login-container {
+  float: right;
+}
+
+/* Style the input field inside the navbar */
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  width: 150px; /* adjust as needed (as long as it doesn't break the topnav) */
+}
+
+/* Style the button inside the input container */
+.topnav .login-container button {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .login-container button:hover {
+  background: #ccc;
+}
+
+/* Add responsiveness - On small screens, display the navbar vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+  .topnav .login-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .login-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc; 
+  }
+}
+/*as per w3schools.com https://www.w3schools.com/howto/howto_css_login_form_navbar.asp */
+
+/* The styling for our forms on the website*/
+.LoginFormContainer {
+  background-color: white;
+  border-radius: 5px;
+  margin: auto;
+  padding: 40px; 
+  margin-top: 15px;
+  width: 400px;
+  line-height: 200%; 
+  /*text-align: center;*/
+}
+
+/* Styles the regular buttons */
+button {
+  border-radius: 5px;
+  margin: auto;
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  position: center;
+}
+
+/* styles the input type=text  */
+input[type=text] {
+  border-radius: 2px;
+}
+
+/* styles the input type=password  */
+input[type=password] {
+  border-radius: 2px;
+}
+
+/* styles the input type=submit  */
+input[type=submit] {
+  border-radius: 5px;
+  display: block;
+  margin-left: 100%;
+  /*margin-right: 50%;*/
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+/* styles the text area */
+textarea {
+  height: 50px;
+  border-radius: 2px;
+  resize: none;
+  width: 177px;
+  overflow: auto;
+}
+
+/* Styles the UI tabs */
+.ui-tabs  {
+  
+  border-radius: 5px;
+  margin: auto;
+  padding: 40px;
+  margin-top: 15px;
+  width:600px;
+  line-height: 200%; 
+  text-align: center;
+}
+
+/* Styles the tabs in the bootstrap */
+.tabs-2 {
+  
+  border-radius: 5px;
+  margin: auto;
+  padding: 40px;
+  margin-top: 15px;
+  width: 400px;
+  line-height: 200%; 
+  text-align: center;
+}
+
+/* styles the form container for therapist */
+.TherapistFormContainer {
+  background-color: white;
+  border-radius: 5px;
+  margin: auto;
+  padding: 40px; 
+  margin-top: 15px;
+  width: 400px;
+  line-height: 200%; 
+}
+
+/* Default style form container  */
+.formContainer {
+  background-color: white;
+  border-radius: 5px;
+  margin: auto;
+  padding: 40px; 
+  margin-top: 15px;
+  width: 400px;
+  line-height: 200%; 
+  text-align: center;
+}
+
+/* Style for paragraph one div */
+.para-1 {
+  padding: 20px;
+  margin-top: 15px;
+  width: 800px;
+  line-height: 120%;
+  margin: auto;
+  /* margin-bottom: 15px; */
+  text-align: center;
+}
+
+/* Style for pic container div */
+.pic-container {
+  width: 900px;
+  text-align:center;
+  padding: 10px;
+}
+
+/* styling of the columns */
+.col {
+  
+  text-align: center;
+}
+
+/* Styling of paragraph 2 div */
+.para-2 {
+  padding: 20px;
+  margin-top: 15px;
+  width: 800px;
+  line-height: 120%;
+  margin: auto;
+  /* margin-bottom: 15px; */
+  
+}
+
+/* Styling of the row bootstrap div */
+ .row {
+   flex-wrap: wrap;
+ }
+
+ /* styling of the labels */
+label{
+  display : inline;
+  padding-right : 4px;
+ }
+
+ /* Styling of option */
+ option{
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/*
+.bkContainer{
+	padding: 12px;
+	position:absolute;
+	left:30%;
+	right:30%;
+	top:12%;
+	border:2px solid white;
+	border-collapse:collapse;
+	background:grey;
+}
+*/
+
+/* styling of booking form container */
+.bookingFormContainer {
+  background-color: white;
+  border-radius: 5px;
+  margin: auto;
+  padding: 40px; 
+  margin-top: 15px;
+  width: 600px;
+  line-height: 200%; 
+  text-align: center;
+}
+
+/* styling of bkingscontainer div */
+.bkingsContainer {
+  background-color: thistle;
+  border-radius: 5px;
+  margin: auto;
+  padding: 40px; 
+  margin-top: 15px;
+  width: 600px;
+  line-height: 200%; 
+  text-align: center;
+}
+
+/* Styling of bksubmit class */
+.bksubmit input[type=submit] {
+  border-radius: 5px;
+  display: block;
+  margin-left: 40%;
+  /*margin-right: 50%;*/
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+/* styling of the big button for deleting */
+.bigButton {
+  border-radius: 5px;
+  margin-left: 5%;
+  padding: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 60px;
+  
+}
+
+/* Styling of the map wrapper */
+.mapWrapper {
+  margin-left: 15%;
+}
