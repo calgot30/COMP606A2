@@ -1,5 +1,7 @@
 <?php
 
+include "dbconnect.php";
+
 class Customer {
     protected $id = null;
     protected $name = null;
@@ -9,7 +11,9 @@ class Customer {
     protected $area = null;
     protected $job_id = null;
 
-    public function __construct($id,$name,$email,$password,$number,$area,$job_id){
+    public $db;
+
+    /* public function __construct($id,$name,$email,$password,$number,$area,$job_id){
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
@@ -17,6 +21,42 @@ class Customer {
         $this->number = $number;
         $this->area = $area;
         $this->job_id = $job_id;
+    } */
+
+    public function RegisterUser($name,$email,$password,$number,$area){
+        $hashed_password = password_hash($password,PASSWORD_DEFAULT);
+        $sql = "SELECT * FROM customer where cust_email ='$email'";
+
+        $check = $this->db->query($sql);
+
+        $count_row = $check->num_rows;
+
+        if ($count_row == 0){
+            $insert = "INSERT INTO Customer(cust_name, cust_email, cust_number, cust_password, area) VALUES (?,?,?,?,?)";
+            $result = mysqli_query($this->db,$insert) or die(mysqli_connect_errno()."Data cannot be inserted");
+            return $result;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public function CheckLogin($email,$password){
+        $hashed_password = password_hash($password,PASSWORD_DEFAULT);
+        $sql1 = "SELECT cust_email from Customers where cust_email = '$email' and cust_password = '$password'";
+
+        $result = mysqli_query($this->db,$sql1);
+        $user_data = mysqli_fetch_array($result);
+        $count_row = $result->num_rows;
+
+        if ($count_row == 1){
+            $_SESSION['login'] = true;
+            $_SESSION['cust_email'] = $user_data['cust_email'];
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 //------------- setter methods ------------
