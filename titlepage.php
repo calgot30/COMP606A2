@@ -135,8 +135,11 @@
 
                 <tr>
 
+
+                
                     <?php
 
+                        //used this code to create an sql form dump in case the list gets updated in the future https://www.e-education.psu.edu/geog863_gmaps/db_p9.html
                                 $user = "guest";
                                 $password = "";
                                 $database = "safetrade";
@@ -147,21 +150,20 @@
 
                                 $sql = "SELECT trade_name FROM trade GROUP BY trade_name;";
 
+                                //uses a for loop to dump out the data
                                 $result = mysqli_query($mysqli,$sql);
-                                if ($result != 0) {
-                                    echo '<label>Trade:';
-                                    echo '<select name="Trade">';
-                                    echo '<option value="">all</option>';
-
+                                if ($result != null) {
+                                    echo '<td>Trade:</td>';
+                                    echo '<td><select name="Trade">';
                                     $num_results = mysqli_num_rows($result);
                                     for ($i=0;$i<$num_results;$i++) {
                                         $row = mysqli_fetch_array($result);
                                         $name = $row['trade_name'];
                                         echo '<option value="' .$name. '">' .$name. '</option>';
                                     }
-
+                                    echo '</td>';
                                     echo '</select>';
-                                    echo '</label>';
+                                    
                                 }
 
                                 mysqli_close($mysqli);

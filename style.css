@@ -221,7 +221,7 @@ textarea {
   margin: auto;
   padding: 40px; 
   margin-top: 15px;
-  width: 400px;
+  width: 450px;
   line-height: 200%; 
   text-align: center;
 }
@@ -282,18 +282,7 @@ label{
     box-sizing: border-box;
 }
 
-/*
-.bkContainer{
-	padding: 12px;
-	position:absolute;
-	left:30%;
-	right:30%;
-	top:12%;
-	border:2px solid white;
-	border-collapse:collapse;
-	background:grey;
-}
-*/
+
 
 /* styling of booking form container */
 .bookingFormContainer {
@@ -343,4 +332,8 @@ label{
 /* Styling of the map wrapper */
 .mapWrapper {
   margin-left: 15%;
+}
+
+select {
+    width: 200px;;
 }
