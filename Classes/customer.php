@@ -3,17 +3,17 @@
 include "dbconnect.php";
 
 class Customer {
-    protected $id = null;
-    protected $name = null;
-    protected $email = null;
-    protected $password = null;
-    protected $number = null;
-    protected $area = null;
-    protected $job_id = null;
+    protected $id;
+    protected $name;
+    protected $email;
+    protected $password;
+    protected $number;
+    protected $area;
+    protected $job_id;
 
     public $db;
 
-    /* public function __construct($id,$name,$email,$password,$number,$area,$job_id){
+    public function __construct($id,$name,$email,$password,$number,$area,$job_id){
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
@@ -21,7 +21,7 @@ class Customer {
         $this->number = $number;
         $this->area = $area;
         $this->job_id = $job_id;
-    } */
+    }
 
     public function RegisterUser($name,$email,$password,$number,$area){
         $hashed_password = password_hash($password,PASSWORD_DEFAULT);
@@ -41,23 +41,7 @@ class Customer {
         }
     }
 
-    public function CheckLogin($email,$password){
-        $hashed_password = password_hash($password,PASSWORD_DEFAULT);
-        $sql1 = "SELECT cust_email from Customers where cust_email = '$email' and cust_password = '$password'";
-
-        $result = mysqli_query($this->db,$sql1);
-        $user_data = mysqli_fetch_array($result);
-        $count_row = $result->num_rows;
-
-        if ($count_row == 1){
-            $_SESSION['login'] = true;
-            $_SESSION['cust_email'] = $user_data['cust_email'];
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
+    
 
 //------------- setter methods ------------
     public function setId($id){

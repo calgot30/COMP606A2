@@ -1,17 +1,5 @@
 <?php include("header.php");
 include_once ('classes/customer.php');
-$customer = new Customer();
-
-if (isset($_REQUEST['submit'])) {
-    extract($_REQUEST);
-    $login = $customer->CheckLogin($email,$password);
-    if ($login) {
-        header("location:main.php");
-    }
-    else {
-        echo 'Wrong username or password';
-    }
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,7 +15,7 @@ if (isset($_REQUEST['submit'])) {
         <div class ="LoginFormContainer">
             <h2>Enter your details to login</h2>
 
-            <form action="" method="POST">
+            <form action="" method="POST" name = "login">
                 <table>
                 <tr>
                 <td>Email Address: </td>
@@ -37,7 +25,7 @@ if (isset($_REQUEST['submit'])) {
                 <td>Password: </td>
                 <td><input type = "password" placeholder="Password" name = "Password"></td>
                 </tr>   
-                <td><input type = "submit" value ="Login"></td>
+                <td><input type = "submit" name = "submit" value ="Login"></td>
                 </tr>
                 </table>
             </form>
