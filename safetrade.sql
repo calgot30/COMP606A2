@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2019 at 03:55 AM
+-- Generation Time: Oct 25, 2019 at 02:19 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -74,6 +74,13 @@ CREATE TABLE `customer` (
   `job_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`cust_id`, `cust_name`, `cust_email`, `cust_password`, `cust_number`, `area`, `job_id`) VALUES
+(1, 'Billy Bob', 'billy@bob.com', 'Password', 211234567, 'Timaru', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -106,6 +113,13 @@ CREATE TABLE `job` (
   `date_needed` date NOT NULL,
   `offer_end_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job`
+--
+
+INSERT INTO `job` (`job_id`, `job_name`, `job_desc`, `cust_id`, `trade_name`, `area`, `preferred_cost`, `date_needed`, `offer_end_date`) VALUES
+(3, 'new roof', 'need new roof', 1, 'Roofer', 'Hawke\'s Bay', 1600, '2019-11-04', '2019-10-31 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -182,9 +196,9 @@ ALTER TABLE `estimate`
 --
 ALTER TABLE `job`
   ADD PRIMARY KEY (`job_id`),
-  ADD KEY `cust_id` (`cust_id`),
   ADD KEY `area` (`area`),
-  ADD KEY `trade_name` (`trade_name`);
+  ADD KEY `trade_name` (`trade_name`),
+  ADD KEY `cust_id` (`cust_id`);
 
 --
 -- Indexes for table `trade`
@@ -200,8 +214,7 @@ ALTER TABLE `tradesman`
   ADD PRIMARY KEY (`tradesman_id`),
   ADD KEY `area` (`area`),
   ADD KEY `quote_id` (`quote_id`),
-  ADD KEY `trade_name` (`trade_name`),
-  ADD KEY `job_id` (`job_id`);
+  ADD KEY `trade_name` (`trade_name`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -214,6 +227,12 @@ ALTER TABLE `area`
   MODIFY `area_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `estimate`
 --
 ALTER TABLE `estimate`
@@ -223,7 +242,7 @@ ALTER TABLE `estimate`
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
-  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `trade`
@@ -261,8 +280,7 @@ ALTER TABLE `estimate`
 ALTER TABLE `job`
   ADD CONSTRAINT `job_ibfk_1` FOREIGN KEY (`trade_name`) REFERENCES `trade` (`trade_name`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `job_ibfk_2` FOREIGN KEY (`area`) REFERENCES `area` (`area`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `job_ibfk_3` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `job_ibfk_4` FOREIGN KEY (`job_id`) REFERENCES `tradesman` (`job_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `job_ibfk_5` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tradesman`
