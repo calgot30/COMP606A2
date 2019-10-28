@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2019 at 02:19 AM
+-- Generation Time: Oct 28, 2019 at 09:46 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -43,7 +43,7 @@ INSERT INTO `area` (`area_id`, `area`) VALUES
 (3, 'Waikato'),
 (4, 'Bay of Plenty'),
 (5, 'Gisborne'),
-(6, 'Hawkes Bay'),
+(6, 'Hawke\'s Bay'),
 (7, 'Taranaki'),
 (8, 'Whanganui'),
 (9, 'Manawatu'),
@@ -70,16 +70,16 @@ CREATE TABLE `customer` (
   `cust_email` varchar(255) NOT NULL,
   `cust_password` varchar(255) NOT NULL,
   `cust_number` int(20) NOT NULL,
-  `area` varchar(30) NOT NULL,
-  `job_id` int(11) NOT NULL
+  `area` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`cust_id`, `cust_name`, `cust_email`, `cust_password`, `cust_number`, `area`, `job_id`) VALUES
-(1, 'Billy Bob', 'billy@bob.com', 'Password', 211234567, 'Timaru', 0);
+INSERT INTO `customer` (`cust_id`, `cust_name`, `cust_email`, `cust_password`, `cust_number`, `area`) VALUES
+(1, 'Billy Bob', 'billy@bob.com', 'Password', 211234567, 'Timaru'),
+(5, 'lucy lawles', 'lucy@lawless.com', 'abc123', 165498416, 'Hawke\'s Bay');
 
 -- --------------------------------------------------------
 
@@ -159,10 +159,15 @@ CREATE TABLE `tradesman` (
   `tradesman_password` varchar(255) NOT NULL,
   `tradesman_number` int(20) NOT NULL,
   `area` varchar(30) NOT NULL,
-  `trade_name` varchar(30) NOT NULL,
-  `job_id` int(11) NOT NULL,
-  `quote_id` int(11) NOT NULL
+  `trade_name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tradesman`
+--
+
+INSERT INTO `tradesman` (`tradesman_id`, `tradesman_name`, `tradesman_email`, `tradesman_password`, `tradesman_number`, `area`, `trade_name`) VALUES
+(1, 'bob the builder', 'bob@builder.com', 'passwordbob', 3214896, 'Northland', 'Building & carpentry');
 
 --
 -- Indexes for dumped tables
@@ -180,8 +185,8 @@ ALTER TABLE `area`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`cust_id`),
-  ADD UNIQUE KEY `area` (`area`),
-  ADD KEY `job_id` (`job_id`);
+  ADD UNIQUE KEY `area` (`area`);
+ALTER TABLE `customer` ADD FULLTEXT KEY `area_2` (`area`);
 
 --
 -- Indexes for table `estimate`
@@ -213,7 +218,6 @@ ALTER TABLE `trade`
 ALTER TABLE `tradesman`
   ADD PRIMARY KEY (`tradesman_id`),
   ADD KEY `area` (`area`),
-  ADD KEY `quote_id` (`quote_id`),
   ADD KEY `trade_name` (`trade_name`);
 
 --
@@ -230,7 +234,7 @@ ALTER TABLE `area`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `estimate`
@@ -254,7 +258,7 @@ ALTER TABLE `trade`
 -- AUTO_INCREMENT for table `tradesman`
 --
 ALTER TABLE `tradesman`
-  MODIFY `tradesman_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tradesman_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -264,30 +268,28 @@ ALTER TABLE `tradesman`
 -- Constraints for table `customer`
 --
 ALTER TABLE `customer`
-  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`area`) REFERENCES `area` (`area`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `customer_ibfk_2` FOREIGN KEY (`job_id`) REFERENCES `job` (`job_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`area`) REFERENCES `area` (`area`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `estimate`
 --
 ALTER TABLE `estimate`
-  ADD CONSTRAINT `estimate_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `job` (`job_id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `estimate_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `job` (`job_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `estimate_ibfk_2` FOREIGN KEY (`tradesman_id`) REFERENCES `tradesman` (`tradesman_id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `job`
 --
 ALTER TABLE `job`
-  ADD CONSTRAINT `job_ibfk_1` FOREIGN KEY (`trade_name`) REFERENCES `trade` (`trade_name`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `job_ibfk_2` FOREIGN KEY (`area`) REFERENCES `area` (`area`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `job_ibfk_5` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `job_ibfk_1` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `job_ibfk_2` FOREIGN KEY (`trade_name`) REFERENCES `trade` (`trade_name`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tradesman`
 --
 ALTER TABLE `tradesman`
-  ADD CONSTRAINT `tradesman_ibfk_1` FOREIGN KEY (`area`) REFERENCES `area` (`area`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `tradesman_ibfk_2` FOREIGN KEY (`trade_name`) REFERENCES `trade` (`trade_name`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `tradesman_ibfk_1` FOREIGN KEY (`area`) REFERENCES `area` (`area`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `tradesman_ibfk_2` FOREIGN KEY (`trade_name`) REFERENCES `trade` (`trade_name`) ON DELETE NO ACTION ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
