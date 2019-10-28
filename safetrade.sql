@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2019 at 09:46 PM
+-- Generation Time: Oct 28, 2019 at 09:55 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -43,7 +43,7 @@ INSERT INTO `area` (`area_id`, `area`) VALUES
 (3, 'Waikato'),
 (4, 'Bay of Plenty'),
 (5, 'Gisborne'),
-(6, 'Hawke\'s Bay'),
+(6, 'Hawkes Bay'),
 (7, 'Taranaki'),
 (8, 'Whanganui'),
 (9, 'Manawatu'),
@@ -79,7 +79,7 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`cust_id`, `cust_name`, `cust_email`, `cust_password`, `cust_number`, `area`) VALUES
 (1, 'Billy Bob', 'billy@bob.com', 'Password', 211234567, 'Timaru'),
-(5, 'lucy lawles', 'lucy@lawless.com', 'abc123', 165498416, 'Hawke\'s Bay');
+(5, 'lucy lawles', 'lucy@lawless.com', 'abc123', 165498416, 'Hawkes Bay');
 
 -- --------------------------------------------------------
 
@@ -167,7 +167,9 @@ CREATE TABLE `tradesman` (
 --
 
 INSERT INTO `tradesman` (`tradesman_id`, `tradesman_name`, `tradesman_email`, `tradesman_password`, `tradesman_number`, `area`, `trade_name`) VALUES
-(1, 'bob the builder', 'bob@builder.com', 'passwordbob', 3214896, 'Northland', 'Building & carpentry');
+(1, 'bob the builder', 'bob@builder.com', 'passwordbob', 3214896, 'Northland', 'Building & carpentry'),
+(3, 'thomas', 'thetank@engine.com', 'password123', 3214896, 'Hawkes Bay', 'Electrician'),
+(4, 'germaine', 'germaine@flight.com', '12p34i21ou4', 124391123, 'Hawkes Bay', 'Glazier');
 
 --
 -- Indexes for dumped tables
@@ -202,14 +204,13 @@ ALTER TABLE `estimate`
 ALTER TABLE `job`
   ADD PRIMARY KEY (`job_id`),
   ADD KEY `area` (`area`),
-  ADD KEY `trade_name` (`trade_name`),
   ADD KEY `cust_id` (`cust_id`);
 
 --
 -- Indexes for table `trade`
 --
 ALTER TABLE `trade`
-  ADD PRIMARY KEY (`trade_name`),
+  ADD PRIMARY KEY (`trade_name`) USING BTREE,
   ADD KEY `trade_id` (`trade_id`);
 
 --
@@ -217,8 +218,7 @@ ALTER TABLE `trade`
 --
 ALTER TABLE `tradesman`
   ADD PRIMARY KEY (`tradesman_id`),
-  ADD KEY `area` (`area`),
-  ADD KEY `trade_name` (`trade_name`);
+  ADD KEY `area` (`area`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -258,7 +258,7 @@ ALTER TABLE `trade`
 -- AUTO_INCREMENT for table `tradesman`
 --
 ALTER TABLE `tradesman`
-  MODIFY `tradesman_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `tradesman_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
