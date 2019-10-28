@@ -43,7 +43,7 @@ INSERT INTO `area` (`area_id`, `area`) VALUES
 (3, 'Waikato'),
 (4, 'Bay of Plenty'),
 (5, 'Gisborne'),
-(6, 'Hawke\'s Bay'),
+(6, 'Hawkes Bay'),
 (7, 'Taranaki'),
 (8, 'Whanganui'),
 (9, 'Manawatu'),
