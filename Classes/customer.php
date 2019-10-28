@@ -1,7 +1,4 @@
 <?php
-
-include "dbconnect.php";
-
 class Customer {
     protected $id;
     protected $name;
@@ -11,9 +8,8 @@ class Customer {
     protected $area;
     protected $job_id;
 
-    public $db;
 
-    public function __construct($id,$name,$email,$password,$number,$area,$job_id){
+/*     public function __construct($id,$name,$email,$password,$number,$area,$job_id){
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
@@ -22,7 +18,7 @@ class Customer {
         $this->area = $area;
         $this->job_id = $job_id;
     }
-
+ */
     public function RegisterUser($name,$email,$password,$number,$area){
         $hashed_password = password_hash($password,PASSWORD_DEFAULT);
         $sql = "SELECT * FROM customer where cust_email ='$email'";
@@ -159,7 +155,58 @@ class Tradesman extends Customer {
     public function getQuoteId(){
     return $this->quote_id;
     }
+
+
+
+    public function getStuff($table, $rows = '*', $join = null, $where = null, $order = null, $limit = null){
+        $selectQuery = 'SELECT '.$rows.' FROM '.$table;
+        if($join != null){
+        $selectQuery .= ' JOIN '.$join;
+        }
+        if($where != null){
+        $selectQuery .= ' WHERE '.$where;
+        }
+        if($order != null){
+        $selectQuery .= ' ORDER BY '.$order;
+        }
+        if($limit != null){
+        $selectQuery .= ' LIMIT '.$limit;
+        }
+        $this->myQuery = $selectQuery;
+        if($this->checkTable($table)){
+        $query = @mysql_query($selectQuery);
+        if($query){
+        $this->numResults = mysql_num_rows($query);
+        for($row = 0; $row < $this->numResults; $row++){
+        $result = mysql_fetch_array($query);
+        $keys = array_keys($result);
+        for($key = 0; $key < count($keys); $key++){ if(!is_int($keys[$key])){ if(mysql_num_rows($query) >= 1){
+        $this->result[$row][$keys[$key]] = $result[$keys[$key]];
+        }else{
+        $this->result = null;
+        }
+        }
+        }
+        }
+        return true;
+        }else{
+        array_push($this->result,mysql_error());
+        return false;
+        }
+        }else{
+        return false;
+        }
+        }
+
+        public function getResult(){
+            $value = $this->result;
+            $this->result = array();
+            return $value;
+            }
 }
+
+
+
 
 
 ?>
