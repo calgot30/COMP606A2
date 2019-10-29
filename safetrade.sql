@@ -119,7 +119,7 @@ CREATE TABLE `job` (
 --
 
 INSERT INTO `job` (`job_id`, `job_name`, `job_desc`, `cust_id`, `trade_name`, `area`, `preferred_cost`, `date_needed`, `offer_end_date`) VALUES
-(3, 'new roof', 'need new roof', 1, 'Roofer', 'Hawke\'s Bay', 1600, '2019-11-04', '2019-10-31 00:00:00');
+(3, 'new roof', 'need new roof', 1, 'Roofer', 'Hawkes Bay', 1600, '2019-11-04', '2019-10-31 00:00:00');
 
 -- --------------------------------------------------------
 
