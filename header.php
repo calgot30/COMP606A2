@@ -1,12 +1,14 @@
 <!-- 
     Header - includes nav.php on all pages where referenced and design features.  
  -->
- <?php
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
+<?php
+  if(!isset($_SESSION)) 
+  { 
+    session_start(); 
+  } 
 include("nav.php");
+require "libs/dbconnect.php";
+require "libs/autoloader.php";
 
 ?>
 

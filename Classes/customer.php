@@ -38,7 +38,6 @@ class Customer {
     }
 
     
-
 //------------- setter methods ------------
     public function setId($id){
         $this->$id = $id;
