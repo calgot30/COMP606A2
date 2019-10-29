@@ -1,19 +1,5 @@
-
-<?php
-
-$_host = "localhost";
-$_username = "guest";
-$_password = "";
-$_database = "safetrade";
-
-
-$mysqli = mysqli_connect($_host, $_username, $_password, $_database);
-if ($mysqli == false){
-    header("location: sitedown.php");
-  }
-
-// make sure we see all errors
-error_reporting(E_ALL);
+<?php require_once("dbconnect.php");?>
+<?php 
 
 
 echo "<h3>*** DATABASE SEEDER RUNNING ***</h3>";
@@ -40,9 +26,9 @@ $sql = <<<EOD
 
 
 INSERT INTO `tradesman` (`tradesman_id`, `tradesman_name`, `tradesman_email`, `tradesman_password`, `tradesman_number`, `area`, `trade_name`) VALUES 
-(1, 'bob the builder', 'bob@builder.com', 'passwordbob', 3214896, 'Northland', 'Building & carpentry'),
-('Sophey Thornber', 'sthornber1@wiley.com', 'o6qlSczJgS7', '1498121792', null, null),
-('Fidelio Jeayes', 'fjeayes2@wikispaces.com', 'FbpEBWB5fq', '7091660601', null, null),
+(20, 'bob the builder', 'bob@builder.com', 'passwordbob', 3214896, 'Northland', 'Building & carpentry'),
+(12, 'Sophey Thornber', 'sthornber1@wiley.com', 'o6qlSczJgS7', '1498121792', null, null),
+(13, 'Fidelio Jeayes', 'fjeayes2@wikispaces.com', 'FbpEBWB5fq', '7091660601', null, null),
 ('Cooper Anfossi', 'canfossi3@craigslist.org', 'mH3nd30b35eY', '6982482977', null, null),
 ('Silas Pennoni', 'spennoni4@wp.com', 'JomEOxEiG', '8043863931', null, null),
 ('Monah Freshwater', 'mfreshwater5@ucoz.com', 'PieEWvCFk', '6246966939', null, null),
