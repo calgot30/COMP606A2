@@ -7,8 +7,8 @@
     session_start(); 
   } 
 include("nav.php");
-require "libs/dbconnect.php";
-require "libs/autoloader.php";
+require "lib/dbconnect.php";
+require "lib/autoloader.php";
 
 ?>
 

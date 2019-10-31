@@ -185,7 +185,7 @@ textarea {
   border-radius: 5px;
   margin: auto;
   padding: 40px;
-  margin-top: 15px;
+  margin-top: 10px;
   width:600px;
   line-height: 200%; 
   text-align: center;
@@ -337,3 +337,17 @@ label{
 select {
     width: 200px;;
 }
+
+.formRight {
+  margin-left: 15%;
+  vertical-align:top;
+  float: left;
+  padding: 50px;
+  
+}
+
+.titlePic {
+  margin-left: 20%;
+  display: inline-block;
+}
+

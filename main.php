@@ -1,6 +1,6 @@
 <?php include("header.php");
-require("classes/dbConnection.php");
-include_once("classes/customer.php");
+require("lib/dbconnect.php");
+include_once("Classes/customer.php");
 
 
 $db = dbConnection::getInstance();

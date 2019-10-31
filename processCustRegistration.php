@@ -1,5 +1,5 @@
 <?php
-include_once 'class/customer.php';
+include_once 'Classes/customer.php';
 $customer = new Customer();
 
 if (isset($_REQUEST['submit'])) {
