@@ -140,7 +140,8 @@
                         </tr>
                         <tr>
                             <td>Location:</td>
-                            <td><select name="location">
+                            <td><select name="area">
+                            <?php $area = $_POST['area'];?>
                                     <option value="Northland">Northland</option>
                                     <option value="Auckland">Auckland</option>
                                     <option value="Waikato">Waikato</option>
@@ -185,6 +186,7 @@
                                         if ($result != null) {
                                             echo '<td>Trade:</td>';
                                             echo '<td><select name="Trade">';
+                                            $trade = $_POST['Trade'];
                                             $num_results = mysqli_num_rows($result);
                                             for ($i=0;$i<$num_results;$i++) {
                                                 $row = mysqli_fetch_array($result);

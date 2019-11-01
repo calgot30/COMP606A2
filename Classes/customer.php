@@ -1,37 +1,51 @@
 <?php
 class Customer {
-    protected $id;
-    protected $name;
-    protected $email;
-    protected $password;
-    protected $number;
-    protected $area;
-    protected $job_id;
-    private $result = array();
+    private $id;
+    private $name;
+    private $email;
+    private $password;
+    private $number;
+    private $area;
+    private $job_id;
+    //private $result = array();
 
-      public function __construct($id,$name,$email,$password,$number,$area,$job_id){
+      public function __construct($name,$email,$password,$number,$area){
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
         $this->number = $number;
-        $this->area = $area;
-
+        $this->area = $area; 
     } 
  
-    public static function RegisterUser($name,$email,$number,$area,$password){
-        $result = false;
-        $hashed_password = password_hash($password,PASSWORD_DEFAULT);
-        $sql = "INSERT INTO Customer(cust_name, cust_email, cust_number, area, cust_password) VALUES ($name,$email,$number,$area,$password)";
+    public static function createCustomer($mysqli,$name,$email,$number,$area,$password){
+        $sql = "SELECT cust_email FROM customer WHERE cust_email = ? LIMIT 1";
 
-        $qresult = $mysqli->query($sql);
+        $insert = "INSERT INTO customer(cust_name, cust_email, cust_password, cust_number, area) VALUES (?,?,?,?,?)";
 
-        if ($qresult){
-            $email = $mysqli->insert_email;
-            $customer = new Customer($name,$email,$number,$area,$password);
-            $result = $customer;
+        //checks that the email isn't already in use
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->bind_result($email);
+        $stmt->store_result();
+
+        $rnum = $stmt->num_rows;
+        if($rnum==0){
+            $stmt->close();
+            $stmt = $mysqli->prepare($insert);
+            $stmt->bind_param('sssss', $name, $email, $hashpassword, $number, $area);
+            $hashpassword = password_hash($password,PASSWORD_DEFAULT);
+            $stmt->execute();
+            $stmt->close();
+            echo "Thank you for registering! Please login.";
         }
-        return $result;
+        else
+        {
+            echo "someones already using that";
+            $stmt->close();
+        }
     }
+
 
     
 //------------- setter methods ------------
@@ -59,7 +73,7 @@ class Customer {
     }  
 
     public function setPassword($password){
-        $this->password = password_hash($password, User::PASSWORD_BCRYPT);
+        $this->password = $password;
     }
 
     public function setNumber($number){
@@ -112,47 +126,4 @@ class Customer {
     echo "</code></pre>";
     }
 }
-
-
-class Tradesman extends Customer {
-    protected $trade_name = null;
-    protected $quote_id = null;
-
-    public function __construct($id,$name,$email,$password,$number,$area,$job_id,$trade_name,$quote_id){
-        $this->id = $id;
-        $this->name = $name;
-        $this->email = $email;
-        $this->password = $password;
-        $this->number = $number;
-        $this->area = $area;
-        $this->job_id = $job_id;
-        $this->trade_name=$trade_name;
-        $this->quote_id=$quote_id;
-    }
-
-
-//------------- setter methods ------------
-    public function setTradeName($trade_name){
-        $this->trade_name = $trade_name;
-    }
-
-    public function setQuoteId($quote_id){
-        $this->quote_id = $quote_id;
-    }
-
-
-//------------- getter methods ------------
-    public function getTradeName(){
-    return $this->trade_name;
-    }
-
-    public function getQuoteId(){
-    return $this->quote_id;
-    }
-}
-
-
-
-
-
 ?>

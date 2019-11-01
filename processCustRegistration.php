@@ -1,7 +1,11 @@
 <?php
 require_once("header.php");
-
-$newCustomer = Customer::RegisterUser($mysqli,$_POST['CustName'],$_POST['CustEmail'],$_POST['CustNum'],$_POST['area'],$_POST['Password']);
+$name = $_POST['CustName'];
+$email = $_POST['CustEmail'];
+$password = $_POST['Password'];
+$number = $_POST['CustNum'];
+$area = $_POST['area'];
+$newCustomer = Customer::createCustomer($mysqli,$name,$email,$number,$area,$password);
 
 if(is_null($newCustomer)){
     "<h2>failed to create new customer</h2>";
@@ -11,6 +15,5 @@ if(is_null($newCustomer)){
     echo "<p><a href=\"main.php\">show registered</a></p>";
 }
 
-require_once("footer.php");
 
 ?>
