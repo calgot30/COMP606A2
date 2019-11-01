@@ -1,26 +1,16 @@
 <?php
-include_once 'Classes/customer.php';
-$customer = new Customer();
+require_once("header.php");
 
-if (isset($_REQUEST['submit'])) {
-    extract($_REQUEST);
-    $login = $customer->CheckLogin($email,$password);
-    if ($login) {
-        header("location:main.php");
-    }
-    else {
-        echo 'Wrong username or password';
-    }
+$newCustomer = Customer::RegisterUser($mysqli,$_POST['CustName'],$_POST['CustEmail'],$_POST['CustNum'],$_POST['Area'],$_POST['Password']);
+
+if(is_null($newCustomer)){
+    "<h2>failed to create new customer</h2>";
+
+}else {
+    echo "<h2>User registered</h2>";
+    echo "<p><a href=\"main.php\">show registered</a></p>";
 }
 
-
-
-
-
-
-
-
-
-
+require_once("footer.php");
 
 ?>
