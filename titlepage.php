@@ -78,7 +78,8 @@
                         </tr>
                         <tr>
                             <td>Location:</td>
-                            <td><select name="location">
+                            <td><select name="area">
+                            <?php $area = $_POST['area'];?>
                                     <option value="Northland">Northland</option>
                                     <option value="Auckland">Auckland</option>
                                     <option value="Waikato">Waikato</option>
@@ -99,7 +100,7 @@
                                     <option value="Otago">Otago</option>
                                     <option value="Southland">Southland</option>                    
                             </td>
-                        </tr>
+                            </tr>
                         <tr>
                             <td>Password: </td>
                             <td> <input type="password" name="Password"></td>

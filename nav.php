@@ -30,7 +30,7 @@
 <?php
 // Check if the user is logged in, if no, show this login nav
 if(isset($_SESSION["loggedin"]) == false){
-    echo "<li><a href=\"Registration.php\">Register</a></li>";
+    echo "<li><a href=\"titlepage.php\">Register</a></li>";
 } 
 ?>
 

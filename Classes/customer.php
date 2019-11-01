@@ -9,32 +9,28 @@ class Customer {
     protected $job_id;
     private $result = array();
 
-/*      public function __construct($id,$name,$email,$password,$number,$area,$job_id){
-        $this->id = $id;
+      public function __construct($id,$name,$email,$password,$number,$area,$job_id){
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
         $this->number = $number;
         $this->area = $area;
-        $this->job_id = $job_id;
-    } */
+
+    } 
  
-    public function RegisterUser($name,$email,$password,$number,$area){
+    public static function RegisterUser($name,$email,$number,$area,$password){
+        $result = false;
         $hashed_password = password_hash($password,PASSWORD_DEFAULT);
-        $sql = "SELECT * FROM customer where cust_email ='$email'";
+        $sql = "INSERT INTO Customer(cust_name, cust_email, cust_number, area, cust_password) VALUES ($name,$email,$number,$area,$password)";
 
-        $check = $this->db->query($sql);
+        $qresult = $mysqli->query($sql);
 
-        $count_row = $check->num_rows;
-
-        if ($count_row == 0){
-            $insert = "INSERT INTO Customer(cust_name, cust_email, cust_number, cust_password, area) VALUES (?,?,?,?,?)";
-            $result = mysqli_query($this->db,$insert) or die(mysqli_connect_errno()."Data cannot be inserted");
-            return $result;
+        if ($qresult){
+            $email = $mysqli->insert_email;
+            $customer = new Customer($name,$email,$number,$area,$password);
+            $result = $customer;
         }
-        else {
-            return false;
-        }
+        return $result;
     }
 
     
@@ -83,7 +79,6 @@ class Customer {
     public function getId(){
         return $this->name;
     }
-
 
     public function getName(){
         return $this->name;

@@ -1,10 +1,7 @@
 <?php include("header.php");
-require("lib/dbconnect.php");
-include_once("Classes/customer.php");
 
 
-$db = dbConnection::getInstance();
-$mysqli = $db->getConnection(); 
+
 $sql_query = "SELECT cust_name,cust_email FROM customer";
 $results = $mysqli->query($sql_query);
 if ($results != null) {
@@ -27,5 +24,7 @@ if ($results1 != null) {
     Echo "</div>";
     }
 }
+
+
 
 ?>
