@@ -29,8 +29,8 @@
 
 <?php
 // Check if the user is logged in, if no, show this login nav
-if(isset($_SESSION["loggedin"]) == false){
-    echo "<li><a href=\"titlepage.php\">Register</a></li>";
+if(isset($_SESSION["loggedin"]) == true){
+    echo "<li><a href=\"profilePage.php\">Profile</a></li>";
 } 
 ?>
 
@@ -38,16 +38,10 @@ if(isset($_SESSION["loggedin"]) == false){
 <?php
 // Check if the user is logged in, if yes show this booking nav
 if(isset($_SESSION["loggedin"]) == true){
-    echo "<li><a href=\"makeBooking.php\">Make a Booking</a></li>";
+    echo "<li><a href=\"createJob.php\">Create a Job</a></li>";
 } 
 ?>
 
-<?php
-// Check if the user is logged in, if no, show this login nav
-if(isset($_SESSION["loggedin"]) == false){
-    echo "<li><a href=\"LoginPage.php\">Login</a></li> ";
-} 
-?>
 
 <?php
 // Check if the user is logged in, if yes show this booking nav
