@@ -31,7 +31,7 @@
 <div class ="mainbar" id="barMain">
 
 <div class ="logo" id="logoHome">
-<img src="Assets/logo.png" alt="Logo Home-Page" height="100" width="125">
+<img src="Assets/logo.png" alt="Logo Home-Page" height="110" width="125">
 </div>
 
 

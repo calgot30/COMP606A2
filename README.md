@@ -15,3 +15,11 @@ Tradesman we have inserted into the SQL file to test tradesman login
 (1, 'bob the builder', 'bob@builder.com', 'passwordbob', 3214896, 'Northland', 'Building & carpentry'),
 (3, 'thomas', 'thetank@engine.com', 'password123', 3214896, 'Hawkes Bay', 'Electrician'),
 (4, 'germaine', 'germaine@flight.com', '12p34i21ou4', 124391123, 'Hawkes Bay', 'Glazier');
+
+
+reference for images
+copyright-free plumber tradesman cartoon gathered from
+https://www.hiclipart.com/free-transparent-background-png-clipart-iaadi/download
+
+logo created for free on
+https://hatchful.shopify.com
