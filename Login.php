@@ -83,11 +83,11 @@ include_once ('classes/customer.php');
                 <table>
                 <tr>
                 <td>Email Address: </td>
-                <td><input type ="text" placeholder="example@thisisnotanemail.com" name = "TherEmail"> </td>
+                <td><input type ="text" placeholder="example@thisisnotanemail.com" name = "TradeEmail"> </td>
                 </tr>
                 <tr>
                 <td>Password: </td>
-                <td><input type = "password" placeholder="Password" name = "TherPassword"></td>
+                <td><input type = "password" placeholder="Password" name = "TradePassword"></td>
                 </tr>   
                 <td><input type = "submit" value ="Login"></td>
                 </tr>
