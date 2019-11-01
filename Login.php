@@ -7,7 +7,7 @@ include_once ('classes/customer.php');
 <body>
 
 <div class="formRight">
-    <img src="Assets/plumber_edit.jpg" alt="plumber doing a thumbs up and smiling" height="250" width="250">
+    <img src="Assets/plumber_edit.png" alt="plumber doing a thumbs up and smiling" height="250" width="250">
     </div>
 
 
