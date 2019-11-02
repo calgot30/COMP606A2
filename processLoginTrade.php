@@ -1,8 +1,8 @@
 <?php
 require_once("header.php");
 
-$email = $_POST['Email'];
-$pwd = $_POST['Password'];
+$email = $_POST['TradeEmail'];
+$pwd = $_POST['TradePassword'];
 $sql = "SELECT tradesman_email, tradesman_password from tradesman where tradesman_email = ?";
 if ($stmt = $mysqli->prepare($sql)) {
     $stmt->bind_param("s", $email);

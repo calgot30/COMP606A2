@@ -298,14 +298,14 @@ label{
 
 /* styling of bkingscontainer div */
 .bkingsContainer {
-  background-color: thistle;
+  background-color: paleturquoise;
   border-radius: 5px;
   margin: auto;
   padding: 40px; 
   margin-top: 15px;
   width: 600px;
   line-height: 200%; 
-  text-align: center;
+  text-align: left;
 }
 
 /* Styling of bksubmit class */
