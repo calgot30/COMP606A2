@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2019 at 10:27 AM
+-- Generation Time: Nov 03, 2019 at 11:12 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -74,6 +74,13 @@ CREATE TABLE `customer` (
   `job_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`cust_id`, `cust_name`, `cust_email`, `cust_password`, `cust_number`, `area`, `job_id`) VALUES
+(0, 'test', 'test@test.com', '$2y$10$dYYsMef4BV4THqPojHX3v.ebCgOKEml/nGRs5xyHzAXeavDv1eiUW', 211234567, 'Waikato', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -102,9 +109,9 @@ CREATE TABLE `job` (
   `cust_email` varchar(255) NOT NULL,
   `trade_name` varchar(30) NOT NULL,
   `area` varchar(30) NOT NULL,
-  `preferred_cost` double NOT NULL,
+  `preferred_cost` int(11) NOT NULL,
   `date_needed` date NOT NULL,
-  `offer_end_date` datetime NOT NULL
+  `offer_end_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -149,6 +156,13 @@ CREATE TABLE `tradesman` (
   `job_id` int(11) NOT NULL,
   `quote_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tradesman`
+--
+
+INSERT INTO `tradesman` (`tradesman_id`, `tradesman_name`, `tradesman_email`, `tradesman_password`, `tradesman_number`, `area`, `trade_name`, `job_id`, `quote_id`) VALUES
+(0, 'test', 'test@test.com', '$2y$10$KOI1oaP0wKJr6uP9vF3XTOa2/Z95Bq/v9PLW3zQpacu3VIbSGVSl2', 2147483647, 'Canterbury', 'Handy-persons', 0, 0);
 
 --
 -- Indexes for dumped tables

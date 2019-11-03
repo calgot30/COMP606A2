@@ -1,55 +1,61 @@
 <?php
 class Job {
+    private $job_id;
+    private $job_name;
+    private $job_desc;
+    private $cust_email;
+    private $trade;
+    private $area;
+    private $jobcost;
+    private $estdate;
+    private $jobdate;
 
-    protected $job_id = null;
-    protected $job_name = null;
-    protected $job_desc = null;
-    protected $cust_id = null;
-    protected $trade_name = null;
-    protected $area = null;
-    protected $preferred_cost = null;
-    protected $date_needed = null;
-    protected $date_expires = null;
-
-    public function __construct($job_id,$job_name,$job_desc,$cust_id,$trade_name,$area,$preferred_cost,$date_needed,$date_expires){
-        $this->job_id = $job_id;
-        $this->job_name = $job_name;
-        $this->job_desc = $job_desc;
-        $this->cust_id = $cust_id;
-        $this->trade_name = $trade_name;
+    public function __construct($name,$jobdesc,$trade,$jobcost,$jobdate,$estdate,$cust_email,$area){
+        $this->name = $name;
+        $this->jobdesc = $jobdesc;
+        $this->cust_email = $cust_email;
+        $this->trade = $trade;
         $this->area = $area;
-        $this->preferred_cost = $preferred_cost;
-        $this->date_needed = $date_needed;
-        $this->date_expires = $date_expires;
+        $this->jobcost = $jobcost;
+        $this->jobdate = $jobdate;
+        $this->estdate = $estdate;
     }
 
+    public static function createJob($mysqli,$name, $jobdesc, $cust_email, $trade, $area, $jobcost, $jobdate, $estdate){
+        $insert = "INSERT INTO job (job_name,job_desc,cust_email,trade_name,area,preferred_cost,date_needed,offer_end_date) VALUES (?,?,?,?,?,?,?,?)";
+        $stmt = $mysqli->prepare($insert);
+        $stmt->bind_param('sssssiss', $name, $jobdesc, $cust_email, $trade, $area, $jobcost, $jobdate, $estdate);   
+        $stmt->execute();
+        $stmt->close();
+    }
+    
 
     //---setter methods---
     public function setJobId($job_id){
         $this->$job_id = $job_id;
     }
 
-    public function setJobName($job_name){
+    public function setName($name){
         $result = true;
-        if (is_string($job_name)){
-            $this->job_name = $job_name;
+        if (is_string($name)){
+            $this->name = $name;
         }
         else $result = false;
         return $result;
     }
 
-    public function setJobDesc($job_desc){
-        $this->$job_desc = $job_desc;
+    public function setJobDesc($jobdesc){
+        $this->$jobdesc = $jobdesc;
     }
 
-    public function setCustId($cust_id){
-        $this->$cust_id = $cust_id;
+    public function setCustEmail($cust_email){
+        $this->$cust_email = $cust_email;
     }
 
-    public function setTradeName($trade_name){
+    public function setTrade($trade){
         $result = true;
-        if (is_string($trade_name)){
-            $this->trade_name = $trade_name;
+        if (is_string($trade)){
+            $this->trade = $trade;
         }
         else $result = false;
         return $result;
@@ -59,16 +65,16 @@ class Job {
         $this->$area = $area;
     }
 
-    public function setPreferredCost($preferred_cost){
-        $this->$preferred_cost = $preferred_cost;
+    public function setJobCost($jobcost){
+        $this->$jobcost = $jobcost;
     }
 
-    public function setDateNeeded($date_needed){
-        $this->date_needed = date_create($date_needed);
+    public function setJobDate($jobdate){
+        $this->jobdate = date_create($jobdate);
     }
 
-    public function setDateExpires($date_expires){
-        $this->date_expires = date_create($date_expires);
+    public function setEstDate($estdate){
+        $this->estdate = date_create($estdate);
     }
 
 
@@ -77,36 +83,36 @@ class Job {
         return $this->job_id;
     }
 
-    public function getJobName(){
-        return $this->job_name;
+    public function getName(){
+        return $this->name;
     }
 
     public function getJobDesc(){
-        return $this->job_desc;
+        return $this->jobdesc;
     }
 
-    public function getCustId(){
-        return $this->cust_id;
+    public function getCustEmail(){
+        return $this->cust_email;
     }
 
-    public function getTradeName(){
-        return $this->trade_name;
+    public function getTrade(){
+        return $this->trade;
     }
 
     public function getArea(){
         return $this->area;
     }
 
-    public function getPreferredCost(){
-        return $this->preferred_cost;
+    public function getJobCost(){
+        return $this->jobcost;
     }
 
-    public function getDateNeeded(){
-        return $this->date_needed;
+    public function getEstDate(){
+        return $this->estdate;
     }
 
-    public function getDateExpires(){
-        return $this->date_expires;
+    public function getJobDate(){
+        return $this->jobdate;
     }
 
 

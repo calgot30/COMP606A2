@@ -8,7 +8,7 @@
 session_start();
 
 if(session_destroy()){
-    header("Location: Home.php");
+    header("Location: titlepage.php");
 }
 
 ?>

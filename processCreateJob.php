@@ -8,12 +8,14 @@ $trade = $_POST['Trade'];
 $jobcost = $_POST['JobCost'];
 $jobdate = $_POST['JobDate'];
 $estdate = $_POST['EstDate'];
-$_SESSION['Email'] = $email;
+$area = $_POST['Area'];
+$cust_email = $_SESSION['Email'];
 
-$newJob = Job::createJob($mysqli,$name,$jobdesc,$trade,$jobcost,$jobdate,$estdate,$email);
+
+$newJob = Job::createJob($mysqli,$name, $jobdesc, $cust_email, $trade, $area, $jobcost, $jobdate, $estdate);
 
 if(is_null($newJob)){
-    "<h2>failed to create new job</h2>";
+    echo "<h2>failed to create new job</h2>";
 
 }else {
     echo "<h2>cool you made your new job!</h2>";
