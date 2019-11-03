@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2019 at 09:55 PM
+-- Generation Time: Nov 03, 2019 at 10:27 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -43,7 +43,7 @@ INSERT INTO `area` (`area_id`, `area`) VALUES
 (3, 'Waikato'),
 (4, 'Bay of Plenty'),
 (5, 'Gisborne'),
-(6, 'Hawkes Bay'),
+(6, 'Hawke\'s Bay'),
 (7, 'Taranaki'),
 (8, 'Whanganui'),
 (9, 'Manawatu'),
@@ -70,16 +70,9 @@ CREATE TABLE `customer` (
   `cust_email` varchar(255) NOT NULL,
   `cust_password` varchar(255) NOT NULL,
   `cust_number` int(20) NOT NULL,
-  `area` varchar(30) NOT NULL
+  `area` varchar(30) NOT NULL,
+  `job_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`cust_id`, `cust_name`, `cust_email`, `cust_password`, `cust_number`, `area`) VALUES
-(1, 'Billy Bob', 'billy@bob.com', 'Password', 211234567, 'Timaru'),
-(5, 'lucy lawles', 'lucy@lawless.com', 'abc123', 165498416, 'Hawkes Bay');
 
 -- --------------------------------------------------------
 
@@ -106,20 +99,13 @@ CREATE TABLE `job` (
   `job_id` int(11) NOT NULL,
   `job_name` varchar(30) NOT NULL,
   `job_desc` varchar(255) NOT NULL,
-  `cust_id` int(11) NOT NULL,
+  `cust_email` varchar(255) NOT NULL,
   `trade_name` varchar(30) NOT NULL,
   `area` varchar(30) NOT NULL,
   `preferred_cost` double NOT NULL,
   `date_needed` date NOT NULL,
   `offer_end_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `job`
---
-
-INSERT INTO `job` (`job_id`, `job_name`, `job_desc`, `cust_id`, `trade_name`, `area`, `preferred_cost`, `date_needed`, `offer_end_date`) VALUES
-(3, 'new roof', 'need new roof', 1, 'Roofer', 'Hawkes Bay', 1600, '2019-11-04', '2019-10-31 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -159,17 +145,10 @@ CREATE TABLE `tradesman` (
   `tradesman_password` varchar(255) NOT NULL,
   `tradesman_number` int(20) NOT NULL,
   `area` varchar(30) NOT NULL,
-  `trade_name` varchar(30) NOT NULL
+  `trade_name` varchar(30) NOT NULL,
+  `job_id` int(11) NOT NULL,
+  `quote_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tradesman`
---
-
-INSERT INTO `tradesman` (`tradesman_id`, `tradesman_name`, `tradesman_email`, `tradesman_password`, `tradesman_number`, `area`, `trade_name`) VALUES
-(1, 'bob the builder', 'bob@builder.com', 'passwordbob', 3214896, 'Northland', 'Building & carpentry'),
-(3, 'thomas', 'thetank@engine.com', 'password123', 3214896, 'Hawkes Bay', 'Electrician'),
-(4, 'germaine', 'germaine@flight.com', '12p34i21ou4', 124391123, 'Hawkes Bay', 'Glazier');
 
 --
 -- Indexes for dumped tables
@@ -186,110 +165,34 @@ ALTER TABLE `area`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`cust_id`),
-  ADD UNIQUE KEY `area` (`area`);
-ALTER TABLE `customer` ADD FULLTEXT KEY `area_2` (`area`);
+  ADD PRIMARY KEY (`cust_email`),
+  ADD KEY `cust_id` (`cust_id`);
 
 --
 -- Indexes for table `estimate`
 --
 ALTER TABLE `estimate`
-  ADD PRIMARY KEY (`estimate_id`),
-  ADD UNIQUE KEY `trades_id` (`tradesman_id`),
-  ADD KEY `job_id` (`job_id`);
+  ADD PRIMARY KEY (`estimate_id`);
 
 --
 -- Indexes for table `job`
 --
 ALTER TABLE `job`
-  ADD PRIMARY KEY (`job_id`),
-  ADD KEY `area` (`area`),
-  ADD KEY `cust_id` (`cust_id`);
+  ADD PRIMARY KEY (`job_id`);
 
 --
 -- Indexes for table `trade`
 --
 ALTER TABLE `trade`
-  ADD PRIMARY KEY (`trade_name`) USING BTREE,
+  ADD PRIMARY KEY (`trade_name`),
   ADD KEY `trade_id` (`trade_id`);
 
 --
 -- Indexes for table `tradesman`
 --
 ALTER TABLE `tradesman`
-  ADD PRIMARY KEY (`tradesman_id`),
-  ADD KEY `area` (`area`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `area`
---
-ALTER TABLE `area`
-  MODIFY `area_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT for table `customer`
---
-ALTER TABLE `customer`
-  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `estimate`
---
-ALTER TABLE `estimate`
-  MODIFY `estimate_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `job`
---
-ALTER TABLE `job`
-  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `trade`
---
-ALTER TABLE `trade`
-  MODIFY `trade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `tradesman`
---
-ALTER TABLE `tradesman`
-  MODIFY `tradesman_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `customer`
---
-ALTER TABLE `customer`
-  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`area`) REFERENCES `area` (`area`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
---
--- Constraints for table `estimate`
---
-ALTER TABLE `estimate`
-  ADD CONSTRAINT `estimate_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `job` (`job_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `estimate_ibfk_2` FOREIGN KEY (`tradesman_id`) REFERENCES `tradesman` (`tradesman_id`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
---
--- Constraints for table `job`
---
-ALTER TABLE `job`
-  ADD CONSTRAINT `job_ibfk_1` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `job_ibfk_2` FOREIGN KEY (`trade_name`) REFERENCES `trade` (`trade_name`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
---
--- Constraints for table `tradesman`
---
-ALTER TABLE `tradesman`
-  ADD CONSTRAINT `tradesman_ibfk_1` FOREIGN KEY (`area`) REFERENCES `area` (`area`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `tradesman_ibfk_2` FOREIGN KEY (`trade_name`) REFERENCES `trade` (`trade_name`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD PRIMARY KEY (`tradesman_email`),
+  ADD KEY `tradesman_id` (`tradesman_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
