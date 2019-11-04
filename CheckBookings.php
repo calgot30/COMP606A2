@@ -18,7 +18,7 @@
 echo "<div class=\"mainContent\">";
 
 
-$sql_query = "SELECT job_name, cust_email,area,date_needed, total_cost,cost_parts FROM job j JOIN estimate e ON j.job_id = e.job_id where tradesman_email = '$_SESSION[Email]'";
+$sql_query = "SELECT job_name, cust_email,area,date_needed, total_cost,cost_parts FROM job j JOIN estimate e ON j.job_id = e.job_id where tradesman_email = '$_SESSION[Email]' and est_accepted = 1";
 
 $results = $mysqli->query($sql_query);
 if ($results != null) {

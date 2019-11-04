@@ -43,6 +43,8 @@
 
     <div class="formRight">
     <img src="Assets/stock_image.jpg" alt="man placing bricks" height="250" width="250">
+    <h2> So you've got a job...</h2>
+    <p>You've come to the right place. Register now to list your chore!</p>
     </div>
 
 
