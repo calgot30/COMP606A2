@@ -1,5 +1,10 @@
 <?php
 
+/* 
+    Class for Tradesman object, similar to the customer object, it takes the information from the user and checks to see if it 
+    uses the same email, if not then a new account is created.
+*/
+
 class Tradesman{
     private $id;
     private $name;
@@ -11,6 +16,7 @@ class Tradesman{
     protected $trade_name = null;
     protected $quote_id = null;
 
+    //constructor
     public function __construct($id,$name,$email,$password,$number,$area,$job_id,$trade_name,$quote_id){
         $this->id = $id;
         $this->name = $name;
@@ -23,6 +29,7 @@ class Tradesman{
         $this->quote_id=$quote_id;
     }
 
+    //checks if users email is the same as any on the tradesman db table, if not then an account is created. Otherwise the user is prompted to try again
     public static function createTradesman($mysqli,$name,$email,$number,$area,$password,$trade){
         $sql = "SELECT tradesman_email FROM tradesman WHERE tradesman_email = ? LIMIT 1";
 

@@ -1,5 +1,12 @@
 <?php include("header.php");
 
+/* 
+    page that can see all of the bookings that one user has made,
+    querys the job table and matches the job id with the customers email SESSION.
+    We then print out the appropriate information in a table.
+*/
+
+
 // if(isset($_SESSION["loggedin"]) == false){
 //     header("Location: titlepage.php");
 // }
@@ -39,7 +46,7 @@ if ($results != null) {
     while($row = mysqli_fetch_assoc($results)) {
         
 
-        echo "<tr>";
+        echo "<tr onclick=\"document.location='detailView.php'\" style=\"cursor:pointer\">";
         echo "<td>" . $row["job_name"]. "</td>";
 
         echo "<td>";

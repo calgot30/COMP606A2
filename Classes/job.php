@@ -1,4 +1,9 @@
 <?php
+
+/* 
+    Class for the job object, it takes the data that the user has put into the form and then creates a job object from that data.
+*/
+
 class Job {
     private $job_id;
     private $job_name;
@@ -21,6 +26,7 @@ class Job {
         $this->estdate = $estdate;
     }
 
+    //creating the job object
     public static function createJob($mysqli,$name, $jobdesc, $cust_email, $trade, $area, $jobcost, $jobdate, $estdate){
         $insert = "INSERT INTO job (job_name,job_desc,cust_email,trade_name,area,preferred_cost,date_needed,offer_end_date) VALUES (?,?,?,?,?,?,?,?)";
         $stmt = $mysqli->prepare($insert);

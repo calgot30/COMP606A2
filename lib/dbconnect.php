@@ -1,5 +1,9 @@
-  
 <?php
+
+/* 
+  Our connection profile to the DB
+*/
+
 error_reporting(0);
 
 $user = "guest";

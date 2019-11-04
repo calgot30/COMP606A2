@@ -1,5 +1,11 @@
 <?php include("header.php");
 
+/* 
+    Simple form page to create a job and POST the relevant information to the processCreateJob.php page
+    we used some code from a website (reference below) to dynamically generate the trade names for us in case the db gets updated in the future.
+*/
+
+
 // if(isset($_SESSION["loggedin"]) == false){
 //     header("Location: titlepage.php");
 // }
@@ -14,9 +20,9 @@
 
 <body>
 
-<div class=bkingsFormContainer>
+<div class="bkingsFormContainer">
 
-<div class=bkingsContainer >
+<div class="bkingsContainer">
     <h2>So you've got a job?</h2>
     <p>Our tradies need to know the details so pop them in on the form below and they will be able to see your listing and give you the estimates you need to get the job done!</p>
 

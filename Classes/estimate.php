@@ -1,4 +1,9 @@
 <?php
+
+/* 
+    Class for Estimate object, creates the estimate with the data inputted from processCreateEstimate.php
+*/
+
 class Estimate {
     private $estimate_id;
     private $job_id;
@@ -8,6 +13,7 @@ class Estimate {
     private $estimate_exp;
 
 
+    //construct function
     public function __construct($job_id,$tradesman_email,$total_cost,$cost_parts,$estimate_exp){
         $this->job_id = $job_id;
         $this->tradesman_email = $tradesman_email;
@@ -16,6 +22,7 @@ class Estimate {
         $this->estimate_exp = $estimate_exp;
     }
 
+    //create a new estimate object and insert into Estimate table
     public static function createEstimate($mysqli,$job_id,$tradesman_email,$total_cost,$cost_parts,$estimate_exp){
         $insert = "INSERT INTO estimate (job_id,tradesman_email,total_cost,cost_parts,estimate_expiry) VALUES (?,?,?,?,?)";
         $stmt = $mysqli->prepare($insert);

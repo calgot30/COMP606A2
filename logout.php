@@ -1,6 +1,6 @@
 <!-- 
     Logout feature which is available on the home page, destroys the 
-    session and sends the user back to the home page.
+    session and sends the user back to the register page.
     
  -->
 

@@ -1,4 +1,8 @@
 <!doctype html>
+
+<!-- first page the user will see upon entering the website application, from here they can choose to register as a customer or a tradesman, or if they already have
+an account they can login. -->
+
 <html lang="en">
 <head>
 <meta charset="utf-8">

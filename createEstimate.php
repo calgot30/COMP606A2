@@ -1,5 +1,9 @@
 <?php include("header.php");
 
+/* 
+    Tradesman have the ability to create an estimate on a job that is on the website, it allows them to make an offer on a job of their choosing.
+*/
+
 // if(isset($_SESSION["loggedin"]) == false){
 //     header("Location: titlepage.php");
 // }
@@ -14,11 +18,11 @@
 
 <body>
 
-<div class=bkingsFormContainer>
+<div class="bkingsFormContainer">
 
-<div class=bkingsContainer >
-    <h2>So you've got a job?</h2>
-    <p>Our tradies need to know the details so pop them in on the form below and they will be able to see your listing and give you the estimates you need to get the job done!</p>
+<div class="bkingsContainer" >
+    <h2>Want to make an offer on a job?</h2>
+    <p>Complete this form and send the client the offer!</p>
 
     <form action="processCreateEstimate.php" method="POST">
 

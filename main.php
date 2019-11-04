@@ -8,6 +8,10 @@
 
 
 <html>
+
+<!-- home page of the application, from here customers and tradesman can view jobs that have been created, they can also
+click on them and it will take them to the detailView.php page which shows the job that matches the ID POSTed there -->
+
 <head>
 <link rel="stylesheet" href="style.css">
 </head>

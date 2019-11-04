@@ -1,5 +1,5 @@
 <!-- 
-    Header - includes nav.php on all pages where referenced and design features.  
+    Header - includes nav.php on all pages where nav header is needed.  
  -->
 <?php
   if(!isset($_SESSION)) 

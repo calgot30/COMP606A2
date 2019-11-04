@@ -1,5 +1,10 @@
 <?php
 
+/* 
+    Takes the information from the estimate form and uses the function createEstimate from the Estimate class.
+    If unsuccessful lets the user know, otherwise directs them to the main menu.
+*/
+
 require_once("header.php");
 
 $job_id = $_POST['JobID'];

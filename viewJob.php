@@ -1,5 +1,9 @@
 <?php include("header.php");
 
+/* 
+    Allows the user to view the jobs that they have created, queries SQL Job table and pulls the items that match the users email.
+*/
+
 // if(isset($_SESSION["loggedin"]) == false){
 //     header("Location: titlepage.php");
 // }

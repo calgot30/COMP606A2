@@ -1,5 +1,10 @@
 <?php
 
+/* 
+    Takes the information from the create job form and uses the function createJob from the Job class.
+    If unsuccessful lets the user know, otherwise directs them to the viewJob menu.
+*/
+
 require_once("header.php");
 
 $name = $_POST['JobName'];

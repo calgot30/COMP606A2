@@ -1,4 +1,9 @@
 <?php include("header.php");
+ 
+/* 
+    Simple page to show dummy content
+*/
+
 
 // if(isset($_SESSION["loggedin"]) == false){
 //     header("Location: titlepage.php");

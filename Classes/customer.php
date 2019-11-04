@@ -1,4 +1,9 @@
 <?php
+
+/* 
+    class for Customer object, connects to the customer table and creates the customer object for new users, checks if their email is already in use and won't allow the user
+    to create an account with a duplicate email.
+*/
 class Customer {
     private $id;
     private $name;
@@ -17,9 +22,11 @@ class Customer {
         $this->area = $area; 
     } 
  
+    //checks that the email the user is trying to enter isn't already in use, then inputs the data into the customer table.
     public static function createCustomer($mysqli,$name,$email,$number,$area,$password){
         $sql = "SELECT cust_email FROM customer WHERE cust_email = ? LIMIT 1";
 
+        //inserts the values into the table
         $insert = "INSERT INTO customer(cust_name, cust_email, cust_password, cust_number, area) VALUES (?,?,?,?,?)";
 
         //checks that the email isn't already in use
@@ -29,6 +36,7 @@ class Customer {
         $stmt->bind_result($email);
         $stmt->store_result();
 
+        //if not in use creates the new user then asks them to login
         $rnum = $stmt->num_rows;
         if($rnum==0){
             $stmt->close();

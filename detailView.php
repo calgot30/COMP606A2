@@ -1,5 +1,9 @@
 <?php include("header.php");
 
+/* 
+    Takes the job ID POSTed from the main or checkbookings pages, shows only the job that matches the job id. 
+*/
+
 // if(isset($_SESSION["loggedin"]) == false){
 //     header("Location: titlepage.php");
 // }
@@ -41,7 +45,7 @@ if ($results != null) {
     // output data of each row
     while($row = mysqli_fetch_assoc($results)) {
         
-
+        
         echo "<tr>";
         echo "<td>" . $row["job_name"]. "</td>";
         echo "<td>";

@@ -1,4 +1,13 @@
 <?php
+
+/* 
+    Takes the information from the login form and checks the tradesman database table to see if there is a match.
+    If their credentials are correct lets the user know and takes them to the main menu, otherwise directs them to the login menu to try again.
+    Or if their is no match of their credentials, theyre prompted to register.
+
+    If they successfully log in two session variables are created
+*/
+
 require_once("header.php");
 
 $email = $_POST['TradeEmail'];
@@ -31,7 +40,7 @@ if ($stmt = $mysqli->prepare($sql)) {
             Echo "<div class=formContainer>";
             Echo "Sorry, no account with that email found! Please make sure you have registered.<br>";
             Echo "Press this button to Register now!<br>";
-            Echo "&nbsp &nbsp<a href=Registration.php><button>Register</button></a>";
+            Echo "&nbsp &nbsp<a href=titlepage.php><button>Register</button></a>";
             Echo "</div>";
         }
     } else{ 

@@ -1,5 +1,10 @@
 <?php include("header.php");
 
+/* 
+    Simple page showing the customer their details
+*/
+
+
 // if(isset($_SESSION["loggedin"]) == false){
 //     header("Location: titlepage.php");
 // }
@@ -23,7 +28,7 @@ $results = $mysqli->query($sql_query);
 if ($results != null) {
 
     Echo "<div>";
-        echo "<table class=\"job_display\">";
+        echo "<table class=\"profile_display\">";
 
         echo "<tr>";
         echo "<th>Customer</th>";
