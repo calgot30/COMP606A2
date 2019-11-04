@@ -18,8 +18,7 @@
 echo "<div class=\"mainContent\">";
 
 
-$sql_query = "SELECT job_name, cust_email,area,date_needed, total_cost,cost_parts FROM job j JOIN estimate e ON j.job_id = e.job_id where tradesman_email = '$_SESSION[Email]' and est_accepted = 1";
-
+$sql_query = "SELECT job_name,job_desc,cust_email,trade_name,area,preferred_cost,date_needed,offer_end_date FROM job where cust_email = '$_SESSION[Email]'";
 $results = $mysqli->query($sql_query);
 if ($results != null) {
 
@@ -28,11 +27,12 @@ if ($results != null) {
 
         echo "<tr>";
         echo "<th>Job</th>";
+        echo "<th>Description</th>";
         echo "<th>Customer Email</th>";
         echo "<th>Area</th>";
+        echo "<th>Preferred Cost</th>";
         echo "<th>Date Needed</th>";
-        echo "<th>Total cost</th>";
-        echo "<th>Cost parts</th>";
+        echo "<th>Closing Date</th>";
         echo "</tr>";
 
     // output data of each row
@@ -41,7 +41,9 @@ if ($results != null) {
 
         echo "<tr>";
         echo "<td>" . $row["job_name"]. "</td>";
-
+        echo "<td>";
+        echo "<br>" . $row["job_desc"]. "<br><br>";
+        echo "</td>";
         echo "<td>";
         echo "<br>" . $row["cust_email"]. "<br><br>";
         echo "</td>";
@@ -49,13 +51,13 @@ if ($results != null) {
         echo "<br>" . $row["area"]. "<br><br>";
         echo "</td>";
         echo "<td>";
+        echo "<br>$" . $row["preferred_cost"]. "<br><br>";
+        echo "</td>";
+        echo "<td>";
         echo "<br>" . $row["date_needed"]. "<br><br>";
         echo "</td>";
         echo "<td>";
-        echo "<br>" . $row["total_cost"]. "<br><br>";
-        echo "</td>";
-        echo "<td>";
-        echo "<br>" . $row["cost_parts"]. "<br><br>";
+        echo "<br>" . $row["offer_end_date"]. "<br><br>";
         echo "</td>";
         echo "</tr>";
         

@@ -27,6 +27,8 @@ class Job {
         $stmt->bind_param('sssssiss', $name, $jobdesc, $cust_email, $trade, $area, $jobcost, $jobdate, $estdate);   
         $stmt->execute();
         $stmt->close();
+        $job = new Job(['JobName'],['JobDesc'],['Email'],['Trade'],['Area'],['JobCost'],['JobDate'],['EstDate']);
+        return $job;
     }
     
 
