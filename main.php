@@ -18,13 +18,14 @@
 echo "<div class=\"mainContent\">";
 
 
-$sql_query = "SELECT job_name,job_desc,cust_email,trade_name,area,preferred_cost,date_needed,offer_end_date FROM job";
+$sql_query = "SELECT job_id,job_name,job_desc,cust_email,trade_name,area,preferred_cost,date_needed,offer_end_date FROM job";
 $results = $mysqli->query($sql_query);
 if ($results != null) {
 
     Echo "<div>";
         echo "<table class=\"job_display\">";
         echo "<tr>";
+        echo "<th>Job ID</th>";
         echo "<th>Job</th>";
         echo "<th>Description</th>";
         echo "<th>Customer Email</th>";
@@ -36,9 +37,14 @@ if ($results != null) {
 
     // output data of each row
     while($row = mysqli_fetch_assoc($results)) {
-        
-        
-        echo "<tr onclick=\"document.location='detailView.php'\" style=\"cursor:hand\">";
+        ?>
+       <!-- // echo "<tr onclick=\"location.href='detailView.php' ?var=\"job_id\"\" style=\"cursor:pointer\" method=\"POST\">";
+       //echo "<tr onclick=\"location.href='detailView.php?ID= -->
+       <tr onclick="location.href='detailView.php?ID=<?php echo "$row[job_id]";?>';">
+       <?php
+       echo "<td>";
+        echo "<br>" . $row["job_id"]. "<br><br>";
+        echo "</td>";
         echo "<td>" . $row["job_name"]. "</td>";
         echo "<td>";
         echo "<br>" . $row["job_desc"]. "<br><br>";
@@ -65,6 +71,9 @@ if ($results != null) {
     echo "</table>";
     
 }
+
+/* <tr onclick="location.href='campaign_detail.php?ID=<?php echo "$row[0]";?>';"> */
+
 
 /* onclick=\"document.location='home.asp'\" style=\"cursor:pointer\" */
 
