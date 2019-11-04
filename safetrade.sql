@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2019 at 11:12 AM
+-- Generation Time: Nov 04, 2019 at 01:43 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -79,7 +79,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`cust_id`, `cust_name`, `cust_email`, `cust_password`, `cust_number`, `area`, `job_id`) VALUES
-(0, 'test', 'test@test.com', '$2y$10$dYYsMef4BV4THqPojHX3v.ebCgOKEml/nGRs5xyHzAXeavDv1eiUW', 211234567, 'Waikato', 0);
+(1, 'test', 'test@test.com', '$2y$10$dYYsMef4BV4THqPojHX3v.ebCgOKEml/nGRs5xyHzAXeavDv1eiUW', 211234567, 'Waikato', 0);
 
 -- --------------------------------------------------------
 
@@ -90,7 +90,7 @@ INSERT INTO `customer` (`cust_id`, `cust_name`, `cust_email`, `cust_password`, `
 CREATE TABLE `estimate` (
   `estimate_id` int(11) NOT NULL,
   `job_id` int(11) NOT NULL,
-  `tradesman_id` int(11) NOT NULL,
+  `tradesman_email` varchar(255) NOT NULL,
   `total_cost` double NOT NULL,
   `cost_parts` varchar(255) NOT NULL,
   `estimate_expiry` datetime NOT NULL
@@ -113,6 +113,15 @@ CREATE TABLE `job` (
   `date_needed` date NOT NULL,
   `offer_end_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job`
+--
+
+INSERT INTO `job` (`job_id`, `job_name`, `job_desc`, `cust_email`, `trade_name`, `area`, `preferred_cost`, `date_needed`, `offer_end_date`) VALUES
+(1, 'need roof', 'need roof', 'test@test.com', 'Roofer', 'Taranaki', 5, '2019-11-18', '2019-11-11'),
+(2, 'need roof', 'need roof', 'test@test.com', 'Roofer', 'Taranaki', 5, '2019-11-18', '2019-11-11'),
+(3, 'need loo', 'loo broke too much poo', 'test@test.com', 'Plumber, gasfitter and drainla', 'Marlborough', 50, '2019-11-13', '2019-11-20');
 
 -- --------------------------------------------------------
 
@@ -162,7 +171,7 @@ CREATE TABLE `tradesman` (
 --
 
 INSERT INTO `tradesman` (`tradesman_id`, `tradesman_name`, `tradesman_email`, `tradesman_password`, `tradesman_number`, `area`, `trade_name`, `job_id`, `quote_id`) VALUES
-(0, 'test', 'test@test.com', '$2y$10$KOI1oaP0wKJr6uP9vF3XTOa2/Z95Bq/v9PLW3zQpacu3VIbSGVSl2', 2147483647, 'Canterbury', 'Handy-persons', 0, 0);
+(1, 'test', 'test@test.com', '$2y$10$KOI1oaP0wKJr6uP9vF3XTOa2/Z95Bq/v9PLW3zQpacu3VIbSGVSl2', 2147483647, 'Canterbury', 'Handy-persons', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -207,6 +216,34 @@ ALTER TABLE `trade`
 ALTER TABLE `tradesman`
   ADD PRIMARY KEY (`tradesman_email`),
   ADD KEY `tradesman_id` (`tradesman_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `estimate`
+--
+ALTER TABLE `estimate`
+  MODIFY `estimate_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `job`
+--
+ALTER TABLE `job`
+  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tradesman`
+--
+ALTER TABLE `tradesman`
+  MODIFY `tradesman_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
