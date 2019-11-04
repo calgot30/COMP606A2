@@ -34,6 +34,20 @@ if(isset($_SESSION["loggedin"]) == true){
 } 
 ?>
 
+<?php
+// Check if the user is logged in, if no, show this login nav
+if(isset($_SESSION["loggedin"]) != true){
+    echo "<li><a href=\"Login.php\">Login</a></li>";
+} 
+?>
+
+<?php
+// Check if the user is logged in, if no, show this login nav
+if(isset($_SESSION["loggedin"]) != true){
+    echo "<li><a href=\"Register.php\">Register</a></li>";
+} 
+?>
+
 
 <?php
 // Check if the user is logged in, if yes show this booking nav
