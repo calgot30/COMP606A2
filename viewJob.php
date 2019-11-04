@@ -22,7 +22,7 @@
 echo "<div class=\"mainContent\">";
 
 
-$sql_query = "SELECT job_name,job_desc,cust_email,trade_name,area,preferred_cost,date_needed,offer_end_date FROM job where job_id = '$_SESSION[Email]'";
+$sql_query = "SELECT job_name,job_desc,cust_email,trade_name,area,preferred_cost,date_needed,offer_end_date FROM job where cust_email = '$_SESSION[Email]'";
 $results = $mysqli->query($sql_query);
 if ($results != null) {
 
@@ -69,6 +69,12 @@ if ($results != null) {
     }
     echo "</table>";
 }
+
+
+
+
+
+
 
 
 ?>

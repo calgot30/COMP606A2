@@ -41,12 +41,10 @@ if ($results != null) {
 
     // output data of each row
     while($row = mysqli_fetch_assoc($results)) {
-        ?>
-       <!-- // echo "<tr onclick=\"location.href='detailView.php' ?var=\"job_id\"\" style=\"cursor:pointer\" method=\"POST\">";
-       //echo "<tr onclick=\"location.href='detailView.php?ID= -->
-       <tr onclick="location.href='detailView.php?ID=<?php echo "$row[job_id]";?>';">
-       <?php
-       echo "<td>";
+       
+        //tried to make a click function to go to detailView.php but couldn't POST the info properly, just left the cool hover hand and hover color capability
+        echo "<tr onclick=\"location.href='detailView.php' ?var=\"job_id\"\" style=\"cursor:pointer\" method=\"POST\">";
+        echo "<td>";
         echo "<br>" . $row["job_id"]. "<br><br>";
         echo "</td>";
         echo "<td>" . $row["job_name"]. "</td>";
