@@ -15,8 +15,10 @@ if(is_null($newEstimate)){
     echo "<h2>failed to create new job</h2>";
 
 }else {
+    echo "<div class=\"mainContent\"";
     echo "<h2>cool you made your new job!</h2>";
     echo "<p><a href=\"main.php\">show jobs</a></p>";
+    echo "</div>";
 }
 
 

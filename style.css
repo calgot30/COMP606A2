@@ -364,6 +364,10 @@ select {
   background-color: #f2f2f2;
 }
 
+.job_display tr:hover {
+  background-color: lightyellow;
+}
+
 .formBreaker {
   width: 250px;
 }

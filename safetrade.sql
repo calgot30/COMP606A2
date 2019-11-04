@@ -79,7 +79,8 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`cust_id`, `cust_name`, `cust_email`, `cust_password`, `cust_number`, `area`, `job_id`) VALUES
-(1, 'test', 'test@test.com', '$2y$10$dYYsMef4BV4THqPojHX3v.ebCgOKEml/nGRs5xyHzAXeavDv1eiUW', 211234567, 'Waikato', 0);
+(1, 'test', 'test@test.com', '$2y$10$dYYsMef4BV4THqPojHX3v.ebCgOKEml/nGRs5xyHzAXeavDv1eiUW', 211234567, 'Waikato', 0),
+(2, 'mark','mark@mark.com', 'mark', 789456123, 'Waikato', 0);
 
 -- --------------------------------------------------------
 
@@ -121,7 +122,7 @@ CREATE TABLE `job` (
 INSERT INTO `job` (`job_id`, `job_name`, `job_desc`, `cust_email`, `trade_name`, `area`, `preferred_cost`, `date_needed`, `offer_end_date`) VALUES
 (1, 'need roof', 'need roof', 'test@test.com', 'Roofer', 'Taranaki', 5, '2019-11-18', '2019-11-11'),
 (2, 'need roof', 'need roof', 'test@test.com', 'Roofer', 'Taranaki', 5, '2019-11-18', '2019-11-11'),
-(3, 'need loo', 'loo broke too much poo', 'test@test.com', 'Plumber, gasfitter and drainla', 'Marlborough', 50, '2019-11-13', '2019-11-20');
+(3, 'need loo', 'loo broke too much poo', 'test@test.com', 'Plumber, gasfitter and drainlayer', 'Marlborough', 50, '2019-11-13', '2019-11-20');
 
 -- --------------------------------------------------------
 

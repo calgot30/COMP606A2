@@ -8,7 +8,9 @@ $area = $_POST['area'];
 $newCustomer = Customer::createCustomer($mysqli,$name,$email,$number,$area,$password);
 
 if(is_null($newCustomer)){
+    echo "<div class=\"mainContent\"";
     echo "<h2>failed to create new customer</h2>";
+    echo "</div>";
 
 }else {
     echo "<h2>User registered</h2>";

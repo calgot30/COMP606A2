@@ -24,7 +24,6 @@ if ($results != null) {
 
     Echo "<div>";
         echo "<table class=\"job_display\">";
-
         echo "<tr>";
         echo "<th>Job</th>";
         echo "<th>Description</th>";
@@ -38,8 +37,8 @@ if ($results != null) {
     // output data of each row
     while($row = mysqli_fetch_assoc($results)) {
         
-
-        echo "<tr>";
+        
+        echo "<tr onclick=\"document.location='detailView.php'\" style=\"cursor:hand\">";
         echo "<td>" . $row["job_name"]. "</td>";
         echo "<td>";
         echo "<br>" . $row["job_desc"]. "<br><br>";
@@ -64,7 +63,10 @@ if ($results != null) {
     Echo "</div>";
     }
     echo "</table>";
+    
 }
+
+/* onclick=\"document.location='home.asp'\" style=\"cursor:pointer\" */
 
 // $sql_query1 = "SELECT tradesman_name, tradesman_email FROM tradesman";
 // $results1 = $mysqli->query($sql_query1);
