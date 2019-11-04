@@ -2,9 +2,9 @@
 
 require_once("header.php");
 
-$job_id = $_POST['JobId'];
+$job_id = $_POST['JobID'];
 $tradesman_email = $_SESSION['Email'];
-$total_cost = $_POST['TotalCost'];
+$total_cost = $_POST['JobCost'];
 $cost_parts = $_POST['CostParts'];
 $estimate_exp = $_POST['EstExp'];
 

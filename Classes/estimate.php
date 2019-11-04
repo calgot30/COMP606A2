@@ -1,11 +1,11 @@
 <?php
 class Estimate {
-    protected $estimate_id = null;
-    protected $job_id = null;
-    protected $tradesman_email = null;
-    protected $total_cost = null;
-    protected $cost_parts = null;
-    protected $estimate_exp = null;
+    private $estimate_id;
+    private $job_id;
+    private $tradesman_email;
+    private $total_cost;
+    private $cost_parts;
+    private $estimate_exp;
 
 
     public function __construct($job_id,$tradesman_email,$total_cost,$cost_parts,$estimate_exp){
@@ -53,26 +53,26 @@ class Estimate {
 
 
 //------ getter methods ------
-    public function setEstimateId($estimate_id){
+    public function getEstimateId(){
        return $this->estimate_id;
     }
 
-    public function getJobId($job_id){
+    public function getJobId(){
         return $this->job_id;
-
-    public function setTradesmanEmail($tradesman_email){
+    }
+    public function getTradesmanEmail(){
         return $this->tradesman_email;
     }
 
-    public function setTotalCost($total_cost){
+    public function getTotalCost(){
         return $this->total_cost;
     }
 
-    public function setCostParts($cost_parts){
+    public function getCostParts(){
         return $this->cost_parts;
     }
 
-    public function setEstimateExp($estimate_exp){
+    public function getEstimateExp(){
         return $this->estimate_exp;
     }
 

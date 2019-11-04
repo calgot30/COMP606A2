@@ -93,7 +93,7 @@ CREATE TABLE `estimate` (
   `tradesman_email` varchar(255) NOT NULL,
   `total_cost` double NOT NULL,
   `cost_parts` varchar(255) NOT NULL,
-  `estimate_expiry` datetime NOT NULL
+  `estimate_expiry` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
