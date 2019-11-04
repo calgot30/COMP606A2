@@ -60,7 +60,7 @@ if(isset($_SESSION["loggedin"]) == true){
 <?php
 // Check if the user is logged in, if yes show this booking nav
 if(isset($_SESSION["loggedin"]) == true){
-    echo "<li><a href=\"CheckBookings.php\">Check Your Bookings</a></li>";
+    echo "<li><a href=\"viewjob.php\">View your jobs</a></li>";
 } 
 ?>
 
