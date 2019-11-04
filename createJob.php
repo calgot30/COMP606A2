@@ -32,8 +32,7 @@
     <input type="text" name="JobCost" placeholder="How much are you hoping it will be" size="57"><br>
 
     <?php
-
-//used this code to create an sql form dump in case the list gets updated in the future https://www.e-education.psu.edu/geog863_gmaps/db_p9.html
+    //used this code to create an sql form dump in case the list gets updated in the future https://www.e-education.psu.edu/geog863_gmaps/db_p9.html
         $sql = "SELECT trade_name FROM trade GROUP BY trade_name;";
         //uses a for loop to dump out the data
         $result = mysqli_query($mysqli,$sql);
