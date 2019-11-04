@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2019 at 01:43 AM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Generation Time: Nov 04, 2019 at 10:30 AM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.1.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -79,8 +79,10 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`cust_id`, `cust_name`, `cust_email`, `cust_password`, `cust_number`, `area`, `job_id`) VALUES
-(1, 'test', 'test@test.com', '$2y$10$dYYsMef4BV4THqPojHX3v.ebCgOKEml/nGRs5xyHzAXeavDv1eiUW', 211234567, 'Waikato', 0),
-(2, 'mark','mark@mark.com', 'mark', 789456123, 'Waikato', 0);
+(3, 'c', 'c@c.com', '$2y$10$tIQ9xpz..4Zyy9IalsxR3Ob/dQNHX.rtmnlHAprlEgH6Wi4pbPtsi', 456789123, 'Bay of Plenty', 0),
+(2, 'mark', 'mark@mark.com', 'mark', 789456123, 'Waikato', 0),
+(4, 'peter', 'parker@peter.com', '$2y$10$rHWfYHIACoi7xivTg/pjSOTx.KvFtIBuqM3t2V3EwJkozBwoXwyGG', 800838383, 'Auckland', 0),
+(1, 'test', 'test@test.com', '$2y$10$dYYsMef4BV4THqPojHX3v.ebCgOKEml/nGRs5xyHzAXeavDv1eiUW', 211234567, 'Waikato', 0);
 
 -- --------------------------------------------------------
 
@@ -122,7 +124,13 @@ CREATE TABLE `job` (
 INSERT INTO `job` (`job_id`, `job_name`, `job_desc`, `cust_email`, `trade_name`, `area`, `preferred_cost`, `date_needed`, `offer_end_date`) VALUES
 (1, 'need roof', 'need roof', 'test@test.com', 'Roofer', 'Taranaki', 5, '2019-11-18', '2019-11-11'),
 (2, 'need roof', 'need roof', 'test@test.com', 'Roofer', 'Taranaki', 5, '2019-11-18', '2019-11-11'),
-(3, 'need loo', 'loo broke too much poo', 'test@test.com', 'Plumber, gasfitter and drainlayer', 'Marlborough', 50, '2019-11-13', '2019-11-20');
+(3, 'need loo', 'loo broke too much poo', 'test@test.com', 'Plumber, gasfitter and drainla', 'Marlborough', 50, '2019-11-13', '2019-11-20'),
+(4, 'jobby', 'job', 'bob@thebuilder.com', 'Building & carpentry', 'Hawke\'s Bay', 4, '2021-01-01', '2022-01-01'),
+(5, 'q', 'q', 'bob@thebuilder.com', 'Building & carpentry', 'Auckland', 5, '2019-01-01', '2019-01-01'),
+(6, 'r', 'r', 'bob@thebuilder.com', 'Building & carpentry', 'Auckland', 9, '2019-01-01', '2019-01-01'),
+(7, 'fix my drywall', 'Kyle punched a hole in my drywall', 'c@c.com', 'Painting', 'West Coast', 20, '2019-12-11', '2019-12-18'),
+(8, 'paint my fence', 'some kids tagged my fence, I need someone to paint it for me', 'c@c.com', 'Painting', 'Whanganui', 400, '2019-12-25', '2019-12-26'),
+(9, 'Help me fix the city', 'Some guy dressed as a spider broke a hole in some ladies wall (not my aunt) I can\'t pay much. Please I deliver pizzas for a living.', 'parker@peter.com', 'Building & carpentry', 'Auckland', 20, '2020-01-10', '2020-01-18');
 
 -- --------------------------------------------------------
 
@@ -172,6 +180,7 @@ CREATE TABLE `tradesman` (
 --
 
 INSERT INTO `tradesman` (`tradesman_id`, `tradesman_name`, `tradesman_email`, `tradesman_password`, `tradesman_number`, `area`, `trade_name`, `job_id`, `quote_id`) VALUES
+(2, 'bob', 'bob@thebuilder.com', '$2y$10$VEtSk4jJ4TAMUSB19viRtu5Gy5IbYHwmqJyIyD0YU/KbLgM.rOieC', 789456123, 'Gisborne', 'Building & carpentry', 0, 0),
 (1, 'test', 'test@test.com', '$2y$10$KOI1oaP0wKJr6uP9vF3XTOa2/Z95Bq/v9PLW3zQpacu3VIbSGVSl2', 2147483647, 'Canterbury', 'Handy-persons', 0, 0);
 
 --
@@ -226,7 +235,7 @@ ALTER TABLE `tradesman`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `estimate`
@@ -238,13 +247,13 @@ ALTER TABLE `estimate`
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
-  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tradesman`
 --
 ALTER TABLE `tradesman`
-  MODIFY `tradesman_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `tradesman_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
