@@ -18,7 +18,7 @@
 echo "<div class=\"mainContent\">";
 
 
-$sql_query = "SELECT job_name,job_desc,cust_email,trade_name,area,preferred_cost,date_needed,offer_end_date FROM job where job_id = '$_SESSION[Email]'";
+$sql_query = "SELECT cust_name,cust_email,cust_number,area from customer where cust_email = '$_SESSION[Email]'";
 $results = $mysqli->query($sql_query);
 if ($results != null) {
 
@@ -26,13 +26,10 @@ if ($results != null) {
         echo "<table class=\"job_display\">";
 
         echo "<tr>";
-        echo "<th>Job</th>";
-        echo "<th>Description</th>";
-        echo "<th>Customer Email</th>";
+        echo "<th>Customer</th>";
+        echo "<th>Email</th>";
+        echo "<th>Number</th>";
         echo "<th>Area</th>";
-        echo "<th>Preferred Cost</th>";
-        echo "<th>Date Needed</th>";
-        echo "<th>Closing Date</th>";
         echo "</tr>";
 
     // output data of each row
@@ -40,24 +37,15 @@ if ($results != null) {
         
 
         echo "<tr>";
-        echo "<td>" . $row["job_name"]. "</td>";
-        echo "<td>";
-        echo "<br>" . $row["job_desc"]. "<br><br>";
-        echo "</td>";
+        echo "<td>" . $row["cust_name"]. "</td>";
         echo "<td>";
         echo "<br>" . $row["cust_email"]. "<br><br>";
         echo "</td>";
         echo "<td>";
+        echo "<br>" . $row["cust_number"]. "<br><br>";
+        echo "</td>";
+        echo "<td>";
         echo "<br>" . $row["area"]. "<br><br>";
-        echo "</td>";
-        echo "<td>";
-        echo "<br>$" . $row["preferred_cost"]. "<br><br>";
-        echo "</td>";
-        echo "<td>";
-        echo "<br>" . $row["date_needed"]. "<br><br>";
-        echo "</td>";
-        echo "<td>";
-        echo "<br>" . $row["offer_end_date"]. "<br><br>";
         echo "</td>";
         echo "</tr>";
         
@@ -70,5 +58,3 @@ if ($results != null) {
 ?>
 </body>
 </html>
-
-
